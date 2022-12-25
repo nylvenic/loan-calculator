@@ -4,10 +4,17 @@ const totalPayment = document.querySelector('#totalPayment');
 const totalInterest = document.querySelector('#totalInterest');
 const alertWindow = document.querySelector('#alertWindow');
 const alertContent = document.querySelector('#alertContent');
-let alertInterval;
+const loadingBar = document.querySelector('#loadingBar');
+const loadingInner = document.querySelector('#loadingInner');
+const progress = document.querySelector('#progress');
+const result = document.querySelector('#result');
+let initialLoading = 0;
+let loadInterval;
+let alertTimeout;
 
 calculateBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    initialLoading = 0;
     
     const loanAmount = document.querySelector('#loanAmount').value;
     const interestRate = document.querySelector('#interestRate').value;
@@ -25,16 +32,27 @@ calculateBtn.addEventListener('click', (e) => {
         createAlert("Please enter how long you'll be paying it off!");
         return;
     }
-
+    startLoading();
     calculate(loanAmount, interestRate, years);
 });
 
+function toggleResult() {
+    if(initialLoading > 1 && initialLoading < 100) {
+        result.classList.remove('none');
+        result.classList.add('hidden');
+    } else if(initialLoading == 100) {
+        result.classList.remove('hidden');
+    } else {
+        result.classList.add('none');
+    }
+}
+
 function createAlert(msg) {
-    clearInterval(alertInterval);
+    clearTimeout(alertTimeout);
     alertContent.textContent = msg;
-    alertWindow.classList.remove('hidden');
-    alertInterval = setInterval(() => {
-        alertWindow.classList.add('hidden');
+    alertWindow.classList.remove('none');
+    alertTimeout = setTimeout(() => {
+        alertWindow.classList.add('none');
     }, 2500);
 }
 
@@ -50,4 +68,21 @@ function calculate(loanAmount, interestRate, years) {
     monthlyPayment.value = monthlyPaymentResult.toFixed(2);
     totalPayment.value = totalPaymentResult.toFixed(2);
     totalInterest.value = interestResult.toFixed(2);
+}
+
+function startLoading() {
+    loadInterval = setInterval(incrementLoading, 10);
+    loadingBar.classList.remove('none');
+}
+
+function incrementLoading() {
+    toggleResult();
+    if(initialLoading < 100) {
+        initialLoading++;
+    } else {
+        clearInterval(loadInterval);
+        loadingBar.classList.add('none');
+    }
+    progress.textContent = `${initialLoading}%`;
+    loadingInner.style.width = `${initialLoading}%`;
 }

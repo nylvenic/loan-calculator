@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="alertWindow" class="hidden">
+        <div id="alertWindow" class="none">
             <p id="alertContent"></p>
         </div>
         <form>
@@ -27,21 +27,27 @@
             </div>
             <button type="submit" id="calculateBtn">Calculate</button>
         </form>
-        <h2>Result</h2>
-        <form id="result">
-            <div class="form-field monthly-payment">
-                <label for="monthlyPayment">Monthly Payment</label>
-                <input type="text" disabled name="monthlyPayment" id="monthlyPayment">
+        <div class="result-container">
+            <div id="loadingBar" class="none">
+                <p id="progress">20%</p>
+                <div id="loadingInner"></div>
             </div>
-            <div class="form-field total-payment">
-                <label for="totalPayment">Total Payment</label>
-                <input type="text" disabled name="totalPayment" id="totalPayment">
-            </div>
-            <div class="form-field total-interest">
-                <label for="totalInterest">Total Interest</label>
-                <input type="text" disabled name="totalInterest" id="totalInterest">
-            </div>
-        </form>
+            <form id="result" class="none">
+                <h2>Result</h2>
+                <div class="form-field monthly-payment">
+                    <label for="monthlyPayment">Monthly Payment</label>
+                    <input type="text" disabled name="monthlyPayment" id="monthlyPayment">
+                </div>
+                <div class="form-field total-payment">
+                    <label for="totalPayment">Total Payment</label>
+                    <input type="text" disabled name="totalPayment" id="totalPayment">
+                </div>
+                <div class="form-field total-interest">
+                    <label for="totalInterest">Total Interest</label>
+                    <input type="text" disabled name="totalInterest" id="totalInterest">
+                </div>
+            </form>
+        </div>
     </div>
     <script src="./scripts/main.js"></script>
 </body>

@@ -76,8 +76,12 @@ h2 {
     margin: 12px;
 }
 
-.hidden {
+.none {
     display: none;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 #alertWindow {
@@ -86,4 +90,33 @@ h2 {
     margin-bottom: 8px;
     color: #eee;
     border-radius: 4px;
+}
+
+#loadingBar {
+    height: 32px;
+    width: 50%;
+    background: #333;
+    margin: 8px auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loadingInner {
+    height: 100%;
+    width: 20%;
+    background: coral;
+}
+
+#progress {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #eee;
+}
+
+.result-container {
+    position: relative;
 }
