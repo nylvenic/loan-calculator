@@ -71,6 +71,7 @@ function calculate(loanAmount, interestRate, years) {
 }
 
 function startLoading() {
+    clearInterval(loadInterval);
     loadInterval = setInterval(incrementLoading, 10);
     loadingBar.classList.remove('none');
 }
