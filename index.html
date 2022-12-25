@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Loan Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <div class="form-field loan-amount">
+                <label for="loanAmount">$</label>
+                <input type="number" name="loanAmount" id="loanAmount" placeholder="10000">
+            </div>
+            <div class="form-field interest-rate">
+                <label for="interestRate">%</label>
+                <input type="number" name="interestRate" id="interestRate" placeholder="5">
+            </div>
+            <div class="form-field years">
+                <input type="number" name="years" id="years" placeholder="2">
+            </div>
+            <button type="submit" id="calculateBtn">Calculate</button>
+        </form>
+        <h2>Result</h2>
+        <form id="result">
+            <div class="form-field monthly-payment">
+                <label for="monthlyPayment">Monthly Payment</label>
+                <input type="text" disabled name="monthlyPayment" id="monthlyPayment">
+            </div>
+            <div class="form-field total-payment">
+                <label for="totalPayment">Total Payment</label>
+                <input type="text" disabled name="totalPayment" id="totalPayment">
+            </div>
+            <div class="form-field total-interest">
+                <label for="totalInterest">Total Interest</label>
+                <input type="text" disabled name="totalInterest" id="totalInterest">
+            </div>
+        </form>
+    </div>
+    <script src="./scripts/main.js"></script>
+</body>
+</html>
